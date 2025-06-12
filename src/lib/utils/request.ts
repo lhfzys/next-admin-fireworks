@@ -51,14 +51,19 @@ apiClient.interceptors.response.use(
           clearAuthAndRedirect();
           return;
         }
-        const { data } = await request({
+        const { value }: any = await request({
           url: 'login/refresh-token',
           method: 'POST',
+          data: { token: refreshToken },
           headers: { Authorization: `Bearer ${refreshToken}` },
         });
-        console.log('refresh token', data);
-        useAuthStore.getState().updateTokens(data.accessToken, data.refreshToken);
-        originalRequest.headers['Authorization'] = `Bearer ${data.accessToken}`;
+        console.log('refresh token', value);
+        if (!value) {
+          clearAuthAndRedirect();
+          return;
+        }
+        useAuthStore.getState().updateTokens(value.accessToken, value.refreshToken);
+        originalRequest.headers['Authorization'] = `Bearer ${value.accessToken}`;
         return apiClient(originalRequest);
       } catch (error: any) {
         if (error.response.status === 401) {
