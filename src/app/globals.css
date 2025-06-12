@@ -9,6 +9,24 @@
     --background: #0a0a0a;
     --foreground: #ededed;
 }
+
 .ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
     left: unset;
+}
+
+@media (max-width: 768px) {
+    .ant-table {
+        width: 100%;
+        overflow-x: auto;
+
+        .ant-table thead > tr th,
+        .ant-table tbody > tr td {
+            white-space: pre;
+        }
+
+        .ant-table thead > tr th span,
+        .ant-table tbody > tr td span {
+            display: block;
+        }
+    }
 }

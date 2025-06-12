@@ -9,6 +9,7 @@ import { useMenus } from '../../hooks/useMenus';
 import { useAuthStore } from '../../store/store';
 import { IconMapper } from '../../utils/icon-mapper';
 import { PageAnimatePresence } from '../page-animate-presence';
+import Footer from './footer';
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -34,6 +35,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
       fixedHeader
       siderMenuType="sub"
       logo={false}
+      className="min-h-screen"
       avatarProps={{
         src: 'https://i.pravatar.cc/300',
         title: `${user?.userName || '未知用户'}`,
@@ -44,6 +46,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
       }}
       menuItemRender={menuItemRender}
       selectedKeys={[pathname]}
+      footerRender={() => <Footer />}
     >
       <PageAnimatePresence>{children}</PageAnimatePresence>
     </ProLayout>
