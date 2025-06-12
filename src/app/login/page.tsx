@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Form, FormProps, Input } from 'antd';
+import { Button, Form, FormProps, Image, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 import { useFormRequest } from '../../lib/hooks/useFormRequest';
@@ -31,8 +31,9 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
-        <h1 className="mb-6 text-center text-2xl font-semibold">后台管理系统登录</h1>
-
+        <h1 className="mb-6 text-center text-2xl font-semibold">
+          <Image src={'/title.svg'} alt="" preview={false} height={40} />
+        </h1>
         <Form name="login-form" autoComplete="off" onFinish={onFinish}>
           <Form.Item<FieldType>
             className="mb-4"

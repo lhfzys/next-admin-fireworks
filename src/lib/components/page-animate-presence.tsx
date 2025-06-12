@@ -30,7 +30,6 @@ export const PageAnimatePresence = ({ children }: { children: React.ReactNode })
         variants={{
           exitState: { opacity: 0, x: 100 },
         }}
-        className="min-h-screen w-full"
       >
         <FrozenRouter>{children}</FrozenRouter>
       </motion.div>
